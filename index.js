@@ -1,5 +1,6 @@
 const express = require('express')
-const { getAllTeams, getTeamById } = require('./controller/teamsController')
+const bodyParser = require('body-parser')
+const { getAllTeams, getTeamById, saveNewTeam } = require('./controller/teams')
 
 
 const app = express()
@@ -7,6 +8,8 @@ const app = express()
 app.get('/', getAllTeams)
 
 app.get('/:id', getTeamById)
+
+app.post('/', bodyParser.json(), saveNewTeam)
 
 
 app.listen(2011, () => {
